@@ -2,8 +2,11 @@ import cv2
 import numpy as np
 from tensorflow.keras.models import load_model
 
+from spatial_attention_layer import SpatialAttentionLayer
+
+
 # Load the pre-trained drowsiness detection model
-model = load_model('best.keras')
+model = load_model('best.keras', custom_objects={'SpatialAttentionLayer': SpatialAttentionLayer})
 
 def apply_gamma_correction(image, gamma=1.5):
     inv_gamma = 1.0 / gamma
